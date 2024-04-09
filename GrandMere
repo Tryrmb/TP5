@@ -1,0 +1,40 @@
+package personnage;
+import java.util.ArrayList;
+import java.util.Random;
+
+public class GrandMere extends Humain {
+    private static final int CAPACITE_MEMOIRE = 5;
+    private ArrayList<String> memoire;
+    
+    public GrandMere(String nom, int age) {
+        super(nom, age, "tisane");
+        this.memoire = new ArrayList<>();
+    }
+    
+    @Override
+    protected void memoriser(String nom) {
+        if (this.memoire.size() < CAPACITE_MEMOIRE) {
+            this.memoire.add(nom);
+        } else {
+            System.out.println("Oh ma tête ! Je ne peux plus retenir le nom d'une personne supplémentaire !");
+        }
+    }
+    
+    private String humainHasard() {
+        Random random = new Random();
+        TypeHumain[] types = TypeHumain.values();
+        TypeHumain type = types[random.nextInt(types.length)];
+        if (type == TypeHumain.TRAITRE) {
+            return "Traître";
+        } else {
+            return type.toString();
+        }
+    }
+    
+    public void ragoter() {
+        System.out.println("(Grand-Mère) - Bonjour ! Je m’appelle " + this.getNom() + " et j’aime boire du " + this.getBoissonFavorite() + ".");
+        for (String nom : this.memoire) {
+            System.out.println("(" + nom + ") - " + humainHasard());
+        }
+    }
+}
