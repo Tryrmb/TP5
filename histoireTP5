@@ -1,0 +1,41 @@
+package histoire;
+
+import personnage.Commercant;
+import personnage.Humain;
+import personnage.Traitre;
+
+public class histoireTP5 {
+    public static void main(String[] args) {
+        Traitre masako = new Traître("Masako", "Miyamoto", "whisky", 100);
+
+        masako.direBonjour();
+
+        Commercant kumi = new Commercant("Kumi", "thé", 25);
+        masako.rançonner(kumi);
+
+        Commercant chonin = new Commercant("Chonin", "saké", 40);
+        masako.rançonner(chonin);
+
+        Humain marco = new Humain("Marco", "thé", 20);
+        masako.faireLeGentil(marco);
+
+        masako.direBonjour();
+        masako.faireLeGentil(marco);
+
+        masako.rançonner(kumi);
+        masako.rançonner(chonin);
+
+        masako.direBonjour();
+        masako.faireLeGentil(marco);
+
+        masako.rançonner(kumi);
+
+        masako.direBonjour();
+
+        Humain akimoto = new Samourai("Akimoto", "Miyamoto", "saké", 80);
+        akimoto.direBonjour();
+
+        masako.direBonjour();
+        masako.faireLeGentil(akimoto);
+    }
+}
