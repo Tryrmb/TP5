@@ -1,0 +1,18 @@
+package personnage;
+
+public class Yakuza extends Humain {
+    private String boissonFavorite;
+    private String clan;
+
+    public Yakuza(String nom, String boissonFavorite, int age, String clan) {
+        super(nom);
+        this.boissonFavorite = boissonFavorite;
+        this.clan = clan;
+    }
+
+    @Override
+    public void direBonjour() {
+        super.direBonjour();
+        System.out.println("Mon clan est celui de " + clan + ".");
+    }
+}
