@@ -1,0 +1,21 @@
+package personnage;
+
+public class Samourai extends Humain {
+    private String seigneur;
+
+    public Samourai(String nom, String seigneur, String boissonFavorite, int age) {
+        super(nom, boissonFavorite, age);
+        this.seigneur = seigneur;
+    }
+
+    @Override
+    public void direBonjour() {
+        super.direBonjour();
+        System.out.println("Je suis fier de servir le seigneur " + seigneur + ".");
+    }
+
+    @Override
+    public void boire(String boisson) {
+        System.out.println("(" + this.nom + ") - Qu'est-ce que je vais choisir comme boisson ? Tiens je vais prendre du " + boisson + ".");
+    }
+}
