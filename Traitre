@@ -1,0 +1,45 @@
+package personnage;
+
+public class Traitre extends Samourai {
+    private Integer niveauTraîtrise;
+
+    public Traitre(String nom, String seigneur, String boissonFavorite, int age) {
+        super(nom, seigneur, boissonFavorite, age);
+        this.niveauTraîtrise = null;
+    }
+
+    @Override
+    public void direBonjour() {
+        super.direBonjour();
+        if (niveauTraîtrise == null) {
+            System.out.println("Je ne peux faire ami-ami avec personne car je ne connais personne ! Snif.");
+        } else {
+            System.out.println("Si tu veux ma protection contre les Yakuzas, il va falloir payer ! Donne-moi 2 sous ou gare à toi !");
+        }
+    }
+
+    public void rançonner(Commercant commercant) {
+        if (niveauTraîtrise == null) {
+            niveauTraîtrise = 0;
+        }
+        if (niveauTraîtrise < 3) {
+            niveauTraîtrise++;
+            double montant = commercant.getArgent() * 0.2;
+            System.out.println(commercant.getNom() + " - Tout de suite grand Masako.");
+            System.out.println("(" + this.nom + ") - Si tu veux ma protection contre les Yakuzas, il va falloir payer ! Donne-moi " + montant + " sous ou gare à toi !");
+        } else {
+            System.out.println("(" + this.nom + ") - Min ce je ne peux plus rançonner personne sinon un samouraï risque de me démasquer !");
+        }
+    }
+
+    public void faireLeGentil(Humain humain) {
+        if (niveauTraîtrise != null && niveauTraîtrise > 0) {
+            niveauTraîtrise--;
+            double don = humain.getArgent() * 0.05;
+            humain.setArgent(humain.getArgent() - don);
+            System.out.println("(" + this.nom + ") - Il faut absolument remonter ma cote de confiance. Je vais faire ami-ami avec " + humain.getNom() + ".");
+            System.out.println("(" + this.nom + ") - Bonjour l'ami ! Je voudrais vous aider en vous donnant " + don + " sous.");
+            System.out.println("(" + humain.getNom() + ") - Merci Masako. Vous êtes quelqu'un de bien.");
+        }
+    }
+}
